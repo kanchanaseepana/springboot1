@@ -42,6 +42,15 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: java-app
+          
+      - name: Download release asset
+        id: download-release-asset
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          version: tags/${{ env.RELEASE }}
+          file: myproject-${{ env.RELEASE }}.tar.gz
+          target: release.tar.gz
+          token: ${{ secrets.DEPLOY_TOKEN }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -51,3 +60,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FAEDAE65D0FA4B03A23F714B68C1A730 }}
           package: '*.war'
+          
