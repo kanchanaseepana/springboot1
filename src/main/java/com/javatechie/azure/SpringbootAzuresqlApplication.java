@@ -3,6 +3,7 @@ package com.javatechie.azure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @SpringBootApplication
 @RestController
-public class SpringbootAzuresqlApplication {
+public class SpringbootAzuresqlApplication extends SpringBootServletInitializer {
 
     @Autowired
     private EmployeeRepository repository;
